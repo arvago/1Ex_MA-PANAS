@@ -136,14 +136,14 @@ public class PersonaDAO {
         return registros;
     }
 
-    public int eliminar(Persona persona) throws SQLException {
+    public int eliminar(int id) throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
         int registros = 0; // Saber cuantos registros se han actualizado
         try {
             conn = this.conexionTransaccional != null ? this.conexionTransaccional : getConnection();
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setInt(1, persona.getId_Persona());
+            stmt.setInt(1,id);
 
             // Ejecutar sentencia
             registros = stmt.executeUpdate(); // modifica el estado de la base de datos (insert, delete, update)

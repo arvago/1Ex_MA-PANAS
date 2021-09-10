@@ -5,17 +5,31 @@
  */
 package ventanas;
 
-/**
- *
- * @author luis_
- */
-public class formulario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form formulario
-     */
-    public formulario() {
+import datos.*;
+import domain.*;
+import java.sql.*;
+import java.util.List;
+import java.sql.*;
+
+public class Formulario extends javax.swing.JFrame {
+
+    public Formulario() {
         initComponents();
+   
+    rbActualizar.setEnabled(false);
+    rbAgregar.setEnabled(false);
+    rbEliminar.setEnabled(false);
+    rbListar.setEnabled(false);
+    txtApellido.setEnabled(false);
+    txtArea.setEnabled(false);
+    txtTelefono.setEnabled(false);
+    txtEmail.setEnabled(false);
+    txtId.setEnabled(false);
+    txtNombre.setEnabled(false);
+    btnAceptar.setEnabled(false);
+    txtTelefono.setEnabled(false);
+    txtContraseña.setEnabled(false);
     }
 
     /**
@@ -27,16 +41,16 @@ public class formulario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        rbEntidad = new javax.swing.ButtonGroup();
+        rbMetodo = new javax.swing.ButtonGroup();
+        btnAceptar = new javax.swing.JButton();
         txtId = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
-        txtContraseña = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         rbAgregar = new javax.swing.JRadioButton();
         rbEliminar = new javax.swing.JRadioButton();
@@ -48,6 +62,7 @@ public class formulario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
+        txtContraseña = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -64,8 +79,8 @@ public class formulario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Aceptar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptar(evt);
             }
@@ -79,8 +94,14 @@ public class formulario extends javax.swing.JFrame {
 
         txtEmail.setText("Email");
 
-        txtContraseña.setText("Contraseña");
+        txtTelefono.setText("Telefono");
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoActionPerformed(evt);
+            }
+        });
 
+        rbMetodo.add(rbAgregar);
         rbAgregar.setText("Agregar");
         rbAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +109,7 @@ public class formulario extends javax.swing.JFrame {
             }
         });
 
+        rbMetodo.add(rbEliminar);
         rbEliminar.setText("Eliminar");
         rbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +117,7 @@ public class formulario extends javax.swing.JFrame {
             }
         });
 
+        rbMetodo.add(rbListar);
         rbListar.setText("Listar");
         rbListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +125,7 @@ public class formulario extends javax.swing.JFrame {
             }
         });
 
+        rbMetodo.add(rbActualizar);
         rbActualizar.setText("Actualizar");
         rbActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +160,7 @@ public class formulario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        rbEntidad.add(rbPersona);
         rbPersona.setText("Persona");
         rbPersona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +168,7 @@ public class formulario extends javax.swing.JFrame {
             }
         });
 
+        rbEntidad.add(rbUsuario);
         rbUsuario.setText("Usuario");
         rbUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,6 +205,13 @@ public class formulario extends javax.swing.JFrame {
         txtArea.setRows(5);
         jScrollPane2.setViewportView(txtArea);
 
+        txtContraseña.setText("Contraseña");
+        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraseñaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,15 +220,17 @@ public class formulario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtId)
-                            .addComponent(txtNombre)
-                            .addComponent(txtApellido)
-                            .addComponent(txtEmail)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtId)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                                .addComponent(txtApellido)
+                                .addComponent(txtEmail))
+                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(33, 33, 33)
@@ -214,63 +249,214 @@ public class formulario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 12, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(8, 8, 8)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane2))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar
-        // TODO add your handling code here:
+        Connection conexion = null;
+        UsuarioDAO usuarioDAO = new UsuarioDAO(conexion);
+        PersonaDAO personaDAO = new PersonaDAO(conexion);
+        
+        try {
+                conexion = Conexion.getConnection();
+                if (conexion.getAutoCommit()) {
+                    conexion.setAutoCommit(false);// Para no hacer automaticamente el commit
+                }
+                
+                if(rbUsuario.isSelected()){
+                    if(rbAgregar.isSelected()){                
+                        Usuario nuevaUsuario = new Usuario();
+                        nuevaUsuario.setUsername(txtNombre.getText());
+                        nuevaUsuario .setPassword(txtContraseña.getText());
+                        usuarioDAO.insertar(nuevaUsuario );
+                    }else{
+                        if(rbActualizar.isSelected()){
+                            Usuario actualizarUsuario = new Usuario();
+                            actualizarUsuario.setId_usuario(Integer.parseInt(txtId.getText()));
+                            actualizarUsuario.setUsername(txtContraseña.getText());
+                            actualizarUsuario.setPassword("password");
+                            usuarioDAO.actualizar(actualizarUsuario);
+                        }else{
+                            if(rbEliminar.isSelected()){
+                                 usuarioDAO.eliminar(Integer.parseInt(txtId.getText()));
+                            }else{
+                                if(rbListar.isSelected()){
+                                    List<Usuario> usuarios = usuarioDAO.seleccionar();
+                                    usuarios.forEach(user -> {
+                                       txtArea.setText(user.toString());
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }else{
+                    if(rbPersona.isSelected()){
+                        if(rbAgregar.isSelected()){                
+                            Persona nuevaPersona = new Persona();
+                            nuevaPersona.setNombre(txtNombre.getText());
+                            nuevaPersona.setApellido(txtApellido.getText());
+                            nuevaPersona.setEmail(txtEmail.getText());
+                            nuevaPersona.setTelefono(txtTelefono.getText());
+                            personaDAO.insertar(nuevaPersona);
+                        }else{
+                            if(rbActualizar.isSelected()){
+                                Persona actualizarPersona = new Persona();
+                                actualizarPersona.setId_Persona(Integer.parseInt(txtId.getText()));
+                                actualizarPersona.setNombre(txtNombre.getText());
+                                actualizarPersona.setApellido(txtApellido.getText());
+                                actualizarPersona.setEmail(txtEmail.getText());
+                                actualizarPersona.setTelefono(txtTelefono.getText());                       
+                                personaDAO.actualizar(actualizarPersona);
+                            }else{
+                                if(rbEliminar.isSelected()){
+                                     personaDAO.eliminar(Integer.parseInt(txtId.getText()));
+                                }else{
+                                    if(rbListar.isSelected()){
+                                        List<Persona> personas = personaDAO.seleccionar();
+                                        personas.forEach(persona -> {
+                                            txtArea.setText(persona.toString());
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                conexion.commit();
+                System.out.println("Se realizaron correctamente las modificaciones en la BD");
+
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+                System.out.println("Entramos al rollback - no fue posible realizar cambios");
+                try {
+                    conexion.rollback();
+                } catch (SQLException ex1) {
+                    ex1.printStackTrace(System.out);
+                }
+            }
     }//GEN-LAST:event_btnAceptar
 
-    private void rbPersona(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPersona
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbPersona
-
-    private void rbUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbUsuario
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbUsuario
-
     private void rbAgregar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAgregar
-        // TODO add your handling code here:
+        if(rbUsuario.isSelected()){
+            txtId.setEnabled(false);
+            txtApellido.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtNombre.setEnabled(true);
+            txtTelefono.setEnabled(false);
+            txtContraseña.setEnabled(true);
+            btnAceptar.setEnabled(true);
+       }else{
+           txtId.setEnabled(false);
+            txtApellido.setEnabled(true);
+            txtEmail.setEnabled(true);
+            txtNombre.setEnabled(true);
+            txtTelefono.setEnabled(true);
+            txtContraseña.setEnabled(true);
+            btnAceptar.setEnabled(true);
+       }
     }//GEN-LAST:event_rbAgregar
 
     private void rbEliminar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbEliminar
-        // TODO add your handling code here:
+        txtId.setEnabled(true);
+        txtApellido.setEnabled(false);
+        txtEmail.setEnabled(false);
+        txtNombre.setEnabled(false);
+        txtTelefono.setEnabled(false);
+        txtContraseña.setEnabled(false);
+        btnAceptar.setEnabled(true);
     }//GEN-LAST:event_rbEliminar
 
     private void rbActualizar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbActualizar
-        // TODO add your handling code here:
+       if(rbUsuario.isSelected()){
+            txtId.setEnabled(true);
+            txtApellido.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtNombre.setEnabled(true);
+            txtTelefono.setEnabled(false);
+            txtContraseña.setEnabled(true);
+            btnAceptar.setEnabled(true);
+       }else{
+           txtId.setEnabled(true);
+            txtApellido.setEnabled(true);
+            txtEmail.setEnabled(true);
+            txtNombre.setEnabled(true);
+            txtTelefono.setEnabled(true);
+            txtContraseña.setEnabled(true);
+            btnAceptar.setEnabled(true);
+       }
+        
     }//GEN-LAST:event_rbActualizar
 
     private void rbListar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbListar
-        // TODO add your handling code here:
+        txtApellido.setEnabled(false);
+        txtTelefono.setEnabled(false);
+        txtEmail.setEnabled(false);
+        txtId.setEnabled(false);
+        txtNombre.setEnabled(false);
+        txtTelefono.setEnabled(false);
+        txtContraseña.setEnabled(false);
+        btnAceptar.setEnabled(true);
     }//GEN-LAST:event_rbListar
+
+    private void rbUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbUsuario
+        txtNombre.setEnabled(true);
+        txtContraseña.setEnabled(true);
+        rbActualizar.setEnabled(true);
+        rbAgregar.setEnabled(true);
+        rbEliminar.setEnabled(true);
+        rbListar.setEnabled(true);
+    }//GEN-LAST:event_rbUsuario
+
+    private void rbPersona(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPersona
+        txtApellido.setEnabled(true);
+        txtEmail.setEnabled(true);
+        txtNombre.setEnabled(true);
+        txtTelefono.setEnabled(true);
+        txtContraseña.setEnabled(false);
+        rbActualizar.setEnabled(true);
+        rbAgregar.setEnabled(true);
+        rbEliminar.setEnabled(true);
+        rbListar.setEnabled(true);
+    }//GEN-LAST:event_rbPersona
+
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoActionPerformed
+
+    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraseñaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,28 +475,27 @@ public class formulario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new formulario().setVisible(true);
+                new Formulario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnAceptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -320,7 +505,9 @@ public class formulario extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbActualizar;
     private javax.swing.JRadioButton rbAgregar;
     private javax.swing.JRadioButton rbEliminar;
+    private javax.swing.ButtonGroup rbEntidad;
     private javax.swing.JRadioButton rbListar;
+    private javax.swing.ButtonGroup rbMetodo;
     private javax.swing.JRadioButton rbPersona;
     private javax.swing.JRadioButton rbUsuario;
     private javax.swing.JTextField txtApellido;
@@ -329,5 +516,6 @@ public class formulario extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

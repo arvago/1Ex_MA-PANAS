@@ -5,11 +5,9 @@
  */
 package test;
 
-import datos.Conexion;
-import datos.UsuarioDAO;
+import datos.*;
 import domain.Usuario;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 /**
