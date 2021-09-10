@@ -5,6 +5,9 @@
  */
 package test;
 
+import datos.Conexion;
+import datos.PersonaDAO;
+import domain.Persona;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -24,7 +27,7 @@ public class TestPersona {
             PersonaDAO personaDAO = new PersonaDAO(conexion);
             
             Persona actualizarPersona = new Persona();
-            actualizarPersona.setIdPersona(1);
+            actualizarPersona.setId_Persona(1);
             actualizarPersona.setNombre("Gerardo");
             actualizarPersona.setApellido("torres");
             actualizarPersona.setEmail("gtorres@gmail.com");

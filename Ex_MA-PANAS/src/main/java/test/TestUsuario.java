@@ -5,6 +5,9 @@
  */
 package test;
 
+import datos.Conexion;
+import datos.UsuarioDAO;
+import domain.Usuario;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -24,7 +27,7 @@ public class TestUsuario {
             }
             UsuarioDAO usuarioDAO = new UsuarioDAO(conexion);
 
-            Usuario actualizarUsuario = new Usuario();
+           Usuario actualizarUsuario = new Usuario();
             actualizarUsuario.setId_usuario(3);
             actualizarUsuario.setUsername("juanito banana");
             actualizarUsuario.setPassword("password");

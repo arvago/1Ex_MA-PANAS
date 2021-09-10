@@ -118,7 +118,7 @@ public class PersonaDAO {
             stmt.setString(2, persona.getApellido());//?
             stmt.setString(3, persona.getEmail());//...
             stmt.setString(4, persona.getTelefono());
-            stmt.setInt(5, persona.getIdPersona()); // Where id_Persona = ?
+            stmt.setInt(5, persona.getId_Persona()); // Where id_Persona = ?
 
             // Ejecutar sentencia
             registros = stmt.executeUpdate(); // modifica el estado de la base de datos (insert, delete, update)
@@ -143,7 +143,7 @@ public class PersonaDAO {
         try {
             conn = this.conexionTransaccional != null ? this.conexionTransaccional : getConnection();
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setInt(1, persona.getIdPersona());
+            stmt.setInt(1, persona.getId_Persona());
 
             // Ejecutar sentencia
             registros = stmt.executeUpdate(); // modifica el estado de la base de datos (insert, delete, update)
