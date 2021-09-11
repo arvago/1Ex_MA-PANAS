@@ -441,7 +441,7 @@ public class Formulario extends javax.swing.JFrame {
             txtEmail.setEnabled(true);
             txtNombre.setEnabled(true);
             txtTelefono.setEnabled(true);
-            txtContraseña.setEnabled(true);
+            txtContraseña.setEnabled(false);
             btnAceptar.setEnabled(true);
        }
         
