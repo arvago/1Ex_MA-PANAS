@@ -51,10 +51,11 @@ public class Usuario {
      @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Usuario{id_usuario: ").append(id_usuario);
+        sb.append("Usuario{id: ").append(id_usuario);
         sb.append(", Username: ").append(username);
         sb.append(", Password: ").append(password);
         sb.append('}');
+        sb.append('\n');
         return sb.toString();
     }
 }

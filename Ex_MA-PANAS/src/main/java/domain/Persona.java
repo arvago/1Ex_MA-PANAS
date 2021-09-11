@@ -77,12 +77,13 @@ public class Persona {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Persona{id_Persona: ").append(id_Persona);
+        sb.append("Persona{id: ").append(id_Persona);
         sb.append(", Nombre: ").append(nombre);
         sb.append(", Apellido: ").append(apellido);
         sb.append(", Email: ").append(email);
         sb.append(", Telefono: ").append(telefono);
         sb.append('}');
+        sb.append('\n');
         return sb.toString();
     }
 
