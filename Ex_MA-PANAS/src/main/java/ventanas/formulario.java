@@ -77,6 +77,12 @@ public class Formulario extends javax.swing.JFrame {
         txtArea = new javax.swing.JTextArea();
         txtContraseña = new javax.swing.JTextField();
         btnFinalizar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,15 +106,12 @@ public class Formulario extends javax.swing.JFrame {
             }
         });
 
-        txtId.setText("ID");
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
 
-        txtNombre.setText("Nombre/Username");
-
-        txtApellido.setText("Apellido");
-
-        txtEmail.setText("Email");
-
-        txtTelefono.setText("Telefono");
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoActionPerformed(evt);
@@ -152,7 +155,7 @@ public class Formulario extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbListar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,7 +222,6 @@ public class Formulario extends javax.swing.JFrame {
         txtArea.setRows(5);
         jScrollPane2.setViewportView(txtArea);
 
-        txtContraseña.setText("Contraseña");
         txtContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContraseñaActionPerformed(evt);
@@ -232,6 +234,18 @@ public class Formulario extends javax.swing.JFrame {
                 btnFinalizarActionPerformed(evt);
             }
         });
+
+        jLabel2.setText("Nombre");
+
+        jLabel3.setText("Apellido");
+
+        jLabel4.setText("Email");
+
+        jLabel5.setText("Contraseña");
+
+        jLabel6.setText("Telefono");
+
+        jLabel7.setText("ID");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -257,15 +271,28 @@ public class Formulario extends javax.swing.JFrame {
                                         .addComponent(txtEmail))
                                     .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(33, 33, 33)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel4)
+                                                    .addComponent(jLabel6)
+                                                    .addComponent(jLabel3))
+                                                .addGap(21, 21, 21))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel7))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2)))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)))
                         .addGap(20, 20, 20)))
                 .addContainerGap())
         );
@@ -276,25 +303,37 @@ public class Formulario extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(8, 8, 8)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
                                 .addGap(8, 8, 8)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                         .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -307,6 +346,16 @@ public class Formulario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void clean(){
+        txtApellido.setText("");
+        txtTelefono.setText("");
+        txtEmail.setText("");
+        txtId.setText("");
+        txtNombre.setText("");
+        txtTelefono.setText("");
+        txtContraseña.setText("");
+    }
+    
     private void btnAceptar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar
         Connection conexion = null;
         UsuarioDAO usuarioDAO = new UsuarioDAO(conexion);
@@ -325,6 +374,7 @@ public class Formulario extends javax.swing.JFrame {
                         nuevaUsuario .setPassword(txtContraseña.getText());
                         usuarioDAO.insertar(nuevaUsuario );
                         counterUsuarioAdd ++;
+                        clean();
                     }else{
                         if(rbActualizar.isSelected()){
                             Usuario actualizarUsuario = new Usuario();
@@ -333,10 +383,12 @@ public class Formulario extends javax.swing.JFrame {
                             actualizarUsuario.setPassword("password");
                             usuarioDAO.actualizar(actualizarUsuario);
                             counterUsuarioUpdate ++;
+                            clean();
                         }else{
                             if(rbEliminar.isSelected()){
                                  usuarioDAO.eliminar(Integer.parseInt(txtId.getText()));
                                  counterUsuarioDelete++;
+                                 clean();
                             }else{
                                 if(rbListar.isSelected()){
                                     List<Usuario> usuarios = usuarioDAO.seleccionar();
@@ -356,6 +408,7 @@ public class Formulario extends javax.swing.JFrame {
                             nuevaPersona.setTelefono(txtTelefono.getText());
                             personaDAO.insertar(nuevaPersona);
                             counterPersonaAdd ++;
+                            clean();
                         }else{
                             if(rbActualizar.isSelected()){
                                 Persona actualizarPersona = new Persona();
@@ -366,10 +419,12 @@ public class Formulario extends javax.swing.JFrame {
                                 actualizarPersona.setTelefono(txtTelefono.getText());                       
                                 personaDAO.actualizar(actualizarPersona);
                                 counterPersonaUpdate ++;
+                                clean();
                             }else{
                                 if(rbEliminar.isSelected()){
                                      personaDAO.eliminar(Integer.parseInt(txtId.getText()));
                                      counterPersonaDelete ++;
+                                     clean();
                                 }else{
                                     if(rbListar.isSelected()){
                                         List<Persona> personas = personaDAO.seleccionar();
@@ -411,7 +466,7 @@ public class Formulario extends javax.swing.JFrame {
             txtEmail.setEnabled(true);
             txtNombre.setEnabled(true);
             txtTelefono.setEnabled(true);
-            txtContraseña.setEnabled(true);
+            txtContraseña.setEnabled(false);
             btnAceptar.setEnabled(true);
        }
     }//GEN-LAST:event_rbAgregar
@@ -459,24 +514,41 @@ public class Formulario extends javax.swing.JFrame {
     }//GEN-LAST:event_rbListar
 
     private void rbUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbUsuario
-        txtNombre.setEnabled(true);
-        txtContraseña.setEnabled(true);
-        rbActualizar.setEnabled(true);
-        rbAgregar.setEnabled(true);
-        rbEliminar.setEnabled(true);
-        rbListar.setEnabled(true);
+            txtApellido.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtTelefono.setEnabled(false);
+            txtContraseña.setEnabled(true);
+            txtNombre.setEnabled(true);
+        if(rbAgregar.isSelected() && rbActualizar.isSelected() && rbEliminar.isSelected()){
+            txtNombre.setEnabled(true);
+            txtContraseña.setEnabled(true);           
+        }
+            rbActualizar.setEnabled(true);
+            rbAgregar.setEnabled(true);
+            rbEliminar.setEnabled(true);
+            rbListar.setEnabled(true);        
     }//GEN-LAST:event_rbUsuario
 
     private void rbPersona(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPersona
-        txtApellido.setEnabled(true);
-        txtEmail.setEnabled(true);
-        txtNombre.setEnabled(true);
-        txtTelefono.setEnabled(true);
-        txtContraseña.setEnabled(false);
-        rbActualizar.setEnabled(true);
-        rbAgregar.setEnabled(true);
-        rbEliminar.setEnabled(true);
-        rbListar.setEnabled(true);
+            txtApellido.setEnabled(true);
+            txtEmail.setEnabled(true);
+            txtNombre.setEnabled(true);
+            txtTelefono.setEnabled(true);
+        if(rbAgregar.isSelected() && rbActualizar.isSelected() && rbEliminar.isSelected()){
+            txtApellido.setEnabled(true);
+            txtEmail.setEnabled(true);
+            txtNombre.setEnabled(true);
+            txtTelefono.setEnabled(true);
+            txtContraseña.setEnabled(false);
+            rbActualizar.setEnabled(true);
+            rbAgregar.setEnabled(true);
+            rbEliminar.setEnabled(true);
+            rbListar.setEnabled(true);
+        }        
+            rbActualizar.setEnabled(true);
+            rbAgregar.setEnabled(true);
+            rbEliminar.setEnabled(true);
+            rbListar.setEnabled(true);
     }//GEN-LAST:event_rbPersona
 
     private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
@@ -496,6 +568,10 @@ public class Formulario extends javax.swing.JFrame {
         counterUsuarioUpdate = 0;
         counterUsuarioDelete = 0;
     }//GEN-LAST:event_btnFinalizarActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -567,6 +643,12 @@ public class Formulario extends javax.swing.JFrame {
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
